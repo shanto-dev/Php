@@ -1,8 +1,11 @@
+<?php
+// include functions
+if ( file_exists( __DIR__ . '/autoload.php' ) ) {
+    require_once __DIR__ . '/autoload.php';
+}
+?>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html lang="en">
 <head>
 
     <!-- Basic Page Needs
@@ -11,11 +14,11 @@
 	<title>zItalyFood | Free Restaurant Html5 Templates</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
-	
+
     <!-- Mobile Specific Metas
   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+
     <!-- CSS
   ================================================== -->
   	<link rel="stylesheet" href="css/zerogrid.css">
@@ -24,30 +27,19 @@
 	<link rel="stylesheet" href="css/menu.css">
 	<!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
-    
+
 </head>
 <body>
 <div class="wrap-body">
 	<!--///////////////////////////////////////Top-->
 	<div class="top">
 		<div class="zerogrid">
-			<ul class="number f-left">
+		    <ul class="number f-left">
 				<li class="mail"><p>ContacUst@Gmail.com</p></li>
 				<li class="phone"><p>08 88888 88888</p></li>
 			</ul>
 			<ul class="top-social f-right">
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+			    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
 				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 				<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -72,7 +64,7 @@
     <a href="#" class="nav-toggle">Toggle Navigation</a>
     <nav class="cmn-tile-nav">
 		<ul class="clearfix">
-			<li class="colour-1"><a href="index.html">Home</a></li>
+	<li class="colour-1"><a href="index.html">Home</a></li>
 			<li class="colour-2"><a href="menu.html">Menu</a></li>
 			<li class="colour-3"><a href="location.html">Location</a></li>
 			<li class="colour-4"><a href="archive.html">Blog</a></li>
@@ -82,35 +74,23 @@
 			<li class="colour-8"><a href="gallery.html">Gallery</a></li>
 		</ul>
     </nav>
-	
+
 	<div class="zerogrid">
 		<div class="callbacks_container">
 			<ul class="rslides" id="slider4">
+                <?php foreach ( $sliders as $slider ): ?>
 				<li>
-					<img src="images/banner1.jpg" alt="">
+					<img src=" <?php echo $slider['image']; ?>" alt="">
 					<div class="caption">
-						<h2>We've got the best spareribs in town.</h2></br>
-						<p>Nulla eget mauris quis elit mollis ornare vitae ut odio. Cras tincidunt, augue vitae sollicitudin commodo,quam elit varius est, et ornare ante massa quis tellus. Mauris nec lacinia nisl. </p>
+						<h2><?php echo $slider['title']; ?></h2></br>
+						<p><?php echo $slider['description']; ?></p>
 					</div>
 				</li>
-				<li>
-					<img src="images/banner2.jpg" alt="">
-					<div class="caption">
-						<h2>If food is an experience, then you'll find it at the restaurant.</h2></br>
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-					</div>
-				</li>
-				<li>
-					<img src="images/banner3.jpg" alt="">
-					<div class="caption">
-						<h2>Enjoy our take-away menu.</h2></br>
-						<p>At vero eos et accusam et justo duo dolores et ea rebum. Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>
-					</div>
-				</li>
+                <?php endforeach;?>
 			</ul>
 		</div>
 	</div>
-	
+
 <!--////////////////////////////////////Container-->
 <section id="container" class="index-page">
 	<div class="wrap-container zerogrid">
@@ -118,8 +98,8 @@
 		<section class="content-box box-1">
 			<div class="zerogrid">
 				<div class="row box-item"><!--Start Box-->
-					<h2>“Your awesome company slogan goes here, we have the best food around”</h2>
-					<span>Unc elementum lacus in gravida pellentesque urna dolor eleifend felis eleifend</span>
+					<h2><?php echo $blockquote[0]['quote_text']; ?></h2>
+					<span><?php echo $blockquote[0]['quote_subtitle']; ?></span>
 				</div>
 			</div>
 		</section>
@@ -128,73 +108,27 @@
 			<div class="zerogrid">
 				<div class="row wrap-box"><!--Start Box-->
 					<div class="header">
-						<h2>Welcome</h2>
+						<h2><?php echo $sectionTitle[0]['title']; ?></h2>
 						<hr class="line">
-						<span>text text text text text</span>
+						<span><?php echo $sectionTitle[0]['subtitle']; ?></span>
 					</div>
 					<div class="row">
+                        <?php foreach ( $products as $product ): ?>
 						<div class="col-1-3">
 							<div class="wrap-col">
 								<div class="box-item">
-									<span class="ribbon">Menu Card<b></b></span>
-									<img src="images/menu.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
+									<?php if ( $product['pdt_cat'] ): ?>
+                                        <span class="ribbon"><?php echo $product['pdt_cat']; ?><b></b></span>
+                                    <?php endif;?>
+									<img src="<?php echo $product['pdt_thumb']; ?>" alt="">
+									<p><?php echo $product['pdt_desc']; ?></p>
+									<?php if ( $product['btn_lable'] ): ?>
+                                        <a href="<?php echo $product['btn_url']; ?>" class="button button-1"><?php echo $product['btn_lable']; ?></a>
+                                    <?php endif;?>
 								</div>
 							</div>
 						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<div class="box-item">
-									<span class="ribbon">Fast Food<b></b></span>
-									<img src="images/fast-food.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<div class="box-item">
-									<span class="ribbon">Reservation<b></b></span>
-									<img src="images/reservation.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<div class="box-item">
-									<span class="ribbon">Chef<b></b></span>
-									<img src="images/chef.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<div class="box-item">
-									<span class="ribbon">Preview<b></b></span>
-									<img src="images/preview.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<div class="box-item">
-									<span class="ribbon">Text Heading<b></b></span>
-									<img src="images/reservation.jpg" alt="">
-									<p>The sliding menucard will surely impress your customers! Set up several pages and display them side by side, just as on a paper menucard!</p>
-									<a href="#" class="button button-1">Detail</a>
-								</div>
-							</div>
-						</div>
+                        <?php endforeach;?>
 					</div>
 				</div>
 			</div>

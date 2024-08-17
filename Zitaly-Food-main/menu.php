@@ -1,3 +1,9 @@
+<?php
+// include functions
+if ( file_exists( __DIR__ . '/autoload.php' ) ) {
+    require_once __DIR__ . '/autoload.php';
+}
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -24,17 +30,6 @@
 	<link rel="stylesheet" href="css/menu.css">
 	<!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
     
 </head>
 <body>
@@ -95,164 +90,42 @@
 		<div id="main-content">
 			<div class="wrap-content">
 				<div class="row">
+                    <?php foreach($menu_lists as $menu_list): ?>
 					<div class="col-1-3">
 						<div class="wrap-col">
-							<h3>Pasta Plates</h3>
+							<h3><?php echo $menu_list['menu_list_title']; ?></h3>
+                            <?php foreach($menu_list['menu_items'] as $list): ?>
 							<div class="post">
-								<a href="#"><img src="images/15.jpg"/></a>
+								<a href="<?php echo $list['menu_url'];?>"><img src="<?php echo $list['menu_image'];?>"/></a>
 								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
+								  <h5><a href="<?php echo $list['menu_url'];?>"><?php echo $list['menu_title']; ?></a></h5>
+								  <span><?php echo $list['menu_price']; ?></span>
 								</div>
 							</div>
-							<div class="post">
-								<a href="#"><img src="images/10.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/9.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
+                            <?php endforeach; ?>
 						</div>
 					</div>
-					<div class="col-1-3">
-						<div class="wrap-col">
-							<h3>Starters</h3>
-							<div class="post">
-								<a href="#"><img src="images/14.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/8.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/7.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-1-3">
-						<div class="wrap-col">
-							<h3>Salads</h3>
-							<div class="post">
-								<a href="#"><img src="images/13.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/4.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/5.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <?php endforeach; ?>
 				</div>
 				<div class="row">
+                    <?php 
+                    $subsetArray = array_slice($menu_lists, 0, 0);
+                    foreach( $subsetArray as $menu_list): ?>
 					<div class="col-1-3">
 						<div class="wrap-col">
-							<h3>Chef's Specials</h3>
+							<h3><?php echo $menu_list['menu_list_title']; ?></h3>
+                            <?php foreach($menu_list['menu_items'] as $list): ?>
 							<div class="post">
-								<a href="#"><img src="images/15.jpg"/></a>
+								<a href="<?php echo $list['menu_url'];?>"><img src="<?php echo $list['menu_image'];?>"/></a>
 								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
+								  <h5><a href="<?php echo $list['menu_url'];?>"><?php echo $list['menu_title']; ?></a></h5>
+								  <span><?php echo $list['menu_price']; ?></span>
 								</div>
 							</div>
-							<div class="post">
-								<a href="#"><img src="images/10.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/9.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
+                            <?php endforeach; ?>
 						</div>
 					</div>
-					<div class="col-1-3">
-						<div class="wrap-col">
-							<h3>Fast Food</h3>
-							<div class="post">
-								<a href="#"><img src="images/14.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								  <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/8.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/7.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-1-3">
-						<div class="wrap-col">
-							<h3>Seafood Specials</h3>
-							<div class="post">
-								<a href="#"><img src="images/13.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/4.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-							<div class="post">
-								<a href="#"><img src="images/5.jpg"/></a>
-								<div class="wrapper">
-								  <h5><a href="#">Lorem ipsum dolor</a></h5>
-								   <span>$25 - $26</span>
-								</div>
-							</div>
-						</div>
-					</div>
+                    <?php endforeach; ?>
 				</div>
 			</div>
 		</div> 
