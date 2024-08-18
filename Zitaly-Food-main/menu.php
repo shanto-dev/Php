@@ -17,11 +17,11 @@ if ( file_exists( __DIR__ . '/autoload.php' ) ) {
 	<title>zItalyFood | Free Restaurant Html5 Templates</title>
 	<meta name="description" content="Free Responsive Html5 Css3 Templates | zerotheme.com">
 	<meta name="author" content="www.zerotheme.com">
-	
+
     <!-- Mobile Specific Metas
   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
+
     <!-- CSS
   ================================================== -->
   	<link rel="stylesheet" href="css/zerogrid.css">
@@ -30,7 +30,7 @@ if ( file_exists( __DIR__ . '/autoload.php' ) ) {
 	<link rel="stylesheet" href="css/menu.css">
 	<!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
+
 </head>
 <body>
 <div class="wrap-body">
@@ -77,7 +77,7 @@ if ( file_exists( __DIR__ . '/autoload.php' ) ) {
 			<li class="colour-8"><a href="gallery.html">Gallery</a></li>
 		</ul>
     </nav>
-	
+
 <!--////////////////////////////////////Container-->
 <section id="container" class="sub-page">
 	<div class="wrap-container zerogrid">
@@ -90,45 +90,51 @@ if ( file_exists( __DIR__ . '/autoload.php' ) ) {
 		<div id="main-content">
 			<div class="wrap-content">
 				<div class="row">
-                    <?php foreach($menu_lists as $menu_list): ?>
+                    <?php foreach ( $menu_lists as $menu_list ): ?>
 					<div class="col-1-3">
 						<div class="wrap-col">
 							<h3><?php echo $menu_list['menu_list_title']; ?></h3>
-                            <?php foreach($menu_list['menu_items'] as $list): ?>
-							<div class="post">
-								<a href="<?php echo $list['menu_url'];?>"><img src="<?php echo $list['menu_image'];?>"/></a>
-								<div class="wrapper">
-								  <h5><a href="<?php echo $list['menu_url'];?>"><?php echo $list['menu_title']; ?></a></h5>
-								  <span><?php echo $list['menu_price']; ?></span>
+                            <?php
+                                $i = 1;
+                                foreach ( $menu_list['menu_items'] as $list ):
+                                    if ( $i > 3 ) {
+                                        break;
+                                    }
+                                    ?>
+								<div class="post">
+									<a href="<?php echo $list['menu_url']; ?>"><img src="<?php echo $list['menu_image']; ?>"/></a>
+									<div class="wrapper">
+									  <h5><a href="<?php echo $list['menu_url']; ?>"><?php echo $list['menu_title']; ?></a></h5>
+									  <span><?php echo $list['menu_price']; ?></span>
+									</div>
 								</div>
-							</div>
-                            <?php endforeach; ?>
+	                            <?php $i++;endforeach;?>
 						</div>
 					</div>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
 				</div>
 				<div class="row">
-                    <?php 
-                    $subsetArray = array_slice($menu_lists, 0, 0);
-                    foreach( $subsetArray as $menu_list): ?>
+                    <?php
+                    $subsetArray = array_slice( $menu_lists, 0, 0 );
+                    foreach ( $subsetArray as $menu_list ): ?>
 					<div class="col-1-3">
 						<div class="wrap-col">
 							<h3><?php echo $menu_list['menu_list_title']; ?></h3>
-                            <?php foreach($menu_list['menu_items'] as $list): ?>
+                            <?php foreach ( $menu_list['menu_items'] as $list ): ?>
 							<div class="post">
-								<a href="<?php echo $list['menu_url'];?>"><img src="<?php echo $list['menu_image'];?>"/></a>
+								<a href="<?php echo $list['menu_url']; ?>"><img src="<?php echo $list['menu_image']; ?>"/></a>
 								<div class="wrapper">
-								  <h5><a href="<?php echo $list['menu_url'];?>"><?php echo $list['menu_title']; ?></a></h5>
+								  <h5><a href="<?php echo $list['menu_url']; ?>"><?php echo $list['menu_title']; ?></a></h5>
 								  <span><?php echo $list['menu_price']; ?></span>
 								</div>
 							</div>
-                            <?php endforeach; ?>
+                            <?php endforeach;?>
 						</div>
 					</div>
-                    <?php endforeach; ?>
+                    <?php endforeach;?>
 				</div>
 			</div>
-		</div> 
+		</div>
 	</div>
 </section>
 
@@ -180,6 +186,6 @@ if ( file_exists( __DIR__ . '/autoload.php' ) ) {
 	<!-- js -->
 	<script src="js/classie.js"></script>
 	<script src="js/demo.js"></script>
-	
+
 </div>
 </body></html>
